@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/Type-Console%20Application-2ea043?style=for-the-badge" alt="Type: Console Application" />
 </p>
 
-<h1 align="center">NexSpoof / NexOP</h1>
+<h1 align="center">NexOP</h1>
 
 <p align="center">
   A lightweight Windows console application written in C++ that provides a simple license-key and account activation system.
