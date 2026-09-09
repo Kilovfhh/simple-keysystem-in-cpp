@@ -76,7 +76,7 @@ int main() {
         
     }
     else {
-        cout << "Welcome to NexSpoof | Undectected Since 2026 | Made By: Nexa" << endl;
+        cout << "Welcome to NexOP | Undectected Since 2026 | Made By: Nexa" << endl;
         cout << "------------------------------------------------------------" << endl;
         cout << "Enter your key license: ";
         std::cin >> KeyLicense;
