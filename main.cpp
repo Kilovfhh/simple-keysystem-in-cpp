@@ -1,3 +1,5 @@
+#define _WIN32_WINNT 0x0400
+#include <stdio.h>
 #include <iostream>
 #include <windows.h>
 #include <conio.h>
@@ -5,6 +7,7 @@
 #include <string>
 #include <thread>
 #include <chrono>
+#include <stdlib.h>
 
 using namespace std;
 struct ActiveMembers {
@@ -12,10 +15,43 @@ struct ActiveMembers {
     bool vip;
 };
 
+
+// Hardware Grabber Simple
+string SIMPLE_HWID() {
+    HW_PROFILE_INFO hwProfileInfo;
+
+    if (GetCurrentHwProfile(&hwProfileInfo)) {
+        string hwid = hwProfileInfo.szHwProfileGuid;
+        ofstream newfile("hwid.log");
+        newfile << hwid;
+        newfile.close();
+        return hwid;
+    };
+
+    return "";
+}
+
+
+void WelcomeHome() {
+    cout << "Thank's for using Nex KeySystem!" << endl;
+    this_thread::sleep_for(chrono::seconds(3));
+    return;
+}
+
+
+
+
+
 int main() {
+    // Changing terminal color lol
+    system("Color 10");
     // Grabbing local user
+    
     char username[256];
     DWORD size = sizeof(username);
+
+    // Grabbing user HWID (just for fun ngl ig)
+    SIMPLE_HWID();
 
     if (GetUserNameA(username, &size)) {
         system("cls");
@@ -29,7 +65,7 @@ int main() {
 
     ActiveMembers members[] = {
         {39475924, true},
-        {43262354, false},
+        {43262354, true},
     };
 
     bool ActiveKey = false;
@@ -92,7 +128,6 @@ int main() {
                     this_thread::sleep_for(chrono::seconds(3));
                     members.vip = true; // Once active well create file saving there key so next time they auto login
 
-                    
                     ofstream filename("NexKey.txt");
                     filename << KeyLicense;
                     filename.close();
@@ -117,8 +152,7 @@ int main() {
     }
 
     // Calling Function
-     
-
+    WelcomeHome();
 
     // Closing Program
     cout << "Press any key to exit." << endl;
